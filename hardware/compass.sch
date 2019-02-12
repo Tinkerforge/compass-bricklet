@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:compass-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -19,9 +20,9 @@ Wire Wire Line
 	6700 2800 6900 2800
 Wire Wire Line
 	6700 2900 7200 2900
-Text GLabel 6700 2800 0    47   Input ~ 0
-SDA
 Text GLabel 6700 2900 0    47   Input ~ 0
+SDA
+Text GLabel 6700 2800 0    47   Input ~ 0
 SCL
 $Comp
 L tinkerforge:GND #PWR03
@@ -430,8 +431,6 @@ Wire Wire Line
 NoConn ~ 4250 2950
 Text GLabel 7100 3200 0    47   Input ~ 0
 RESET
-Wire Wire Line
-	7100 3200 7350 3200
 Text GLabel 4050 2850 0    47   Output ~ 0
 RESET
 Wire Wire Line
@@ -498,13 +497,119 @@ Wire Wire Line
 Wire Wire Line
 	2200 1500 2200 1550
 Wire Wire Line
-	6900 2800 7350 2800
-Wire Wire Line
-	7200 2900 7350 2900
-Wire Wire Line
 	7050 2250 7100 2250
 Wire Wire Line
 	7100 2250 7200 2250
 Wire Wire Line
 	7000 2250 7050 2250
+$Comp
+L tinkerforge:MMC5883MA U?
+U 1 1 5C633EC1
+P 8900 3150
+F 0 "U?" H 8900 4100 50  0000 L CNN
+F 1 "MMC5883MA" V 9150 2900 50  0000 L CNN
+F 2 "" H 8900 3150 50  0001 C CNN
+F 3 "" H 8900 3150 50  0001 C CNN
+	1    8900 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7550 2800 7550 2400
+Wire Wire Line
+	7550 2400 8500 2400
+Wire Wire Line
+	6900 2800 7550 2800
+Wire Wire Line
+	7550 2900 7550 3900
+Wire Wire Line
+	7550 3900 8500 3900
+Wire Wire Line
+	7200 2900 7550 2900
+$Comp
+L tinkerforge:C C?
+U 1 1 5C63B458
+P 8000 3300
+F 0 "C?" V 7950 3150 50  0000 C CNN
+F 1 "10uF" V 8050 3450 50  0000 C CNN
+F 2 "" H 8000 3300 60  0000 C CNN
+F 3 "" H 8000 3300 60  0000 C CNN
+	1    8000 3300
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8500 3400 8200 3400
+Wire Wire Line
+	8200 3400 8200 3450
+Wire Wire Line
+	8200 3450 7750 3450
+Connection ~ 7750 3450
+Wire Wire Line
+	7750 3450 7750 3750
+Wire Wire Line
+	8200 3200 8200 3150
+Wire Wire Line
+	8200 3150 7750 3150
+Wire Wire Line
+	8200 3200 8500 3200
+Wire Wire Line
+	7750 3150 7750 3300
+Wire Wire Line
+	7800 3300 7750 3300
+Connection ~ 7750 3300
+Wire Wire Line
+	7750 3300 7750 3450
+Wire Wire Line
+	8200 3300 8500 3300
+$Comp
+L tinkerforge:GND #PWR?
+U 1 1 5C645988
+P 7750 4100
+F 0 "#PWR?" H 7750 3850 50  0001 C CNN
+F 1 "GND" H 7755 3927 50  0000 C CNN
+F 2 "" H 7750 4100 50  0000 C CNN
+F 3 "" H 7750 4100 50  0000 C CNN
+	1    7750 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 2500 8300 2500
+Wire Wire Line
+	8300 2500 8300 3600
+Wire Wire Line
+	8300 3600 8500 3600
+$Comp
+L tinkerforge:C C?
+U 1 1 5C6471E1
+P 8000 3750
+F 0 "C?" V 7850 3750 50  0000 C CNN
+F 1 "1uF" V 8050 3900 50  0000 C CNN
+F 2 "" H 8000 3750 60  0000 C CNN
+F 3 "" H 8000 3750 60  0000 C CNN
+	1    8000 3750
+	0    1    1    0   
+$EndComp
+$Comp
+L tinkerforge:3V3 #PWR?
+U 1 1 5C6473B1
+P 8200 3700
+F 0 "#PWR?" H 8200 3550 50  0001 C CNN
+F 1 "3V3" H 8215 3873 50  0000 C CNN
+F 2 "" H 8200 3700 50  0000 C CNN
+F 3 "" H 8200 3700 50  0000 C CNN
+	1    8200 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7800 3750 7750 3750
+Connection ~ 7750 3750
+Wire Wire Line
+	7750 3750 7750 4100
+Wire Wire Line
+	8200 3750 8300 3750
+Wire Wire Line
+	8300 3750 8300 3600
+Connection ~ 8300 3600
+Wire Wire Line
+	8200 3700 8200 3750
+Connection ~ 8200 3750
 $EndSCHEMATC
