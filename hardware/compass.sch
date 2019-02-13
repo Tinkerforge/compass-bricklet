@@ -16,13 +16,9 @@ Comment4 ""
 $EndDescr
 Text Notes 550  7750 0    40   ~ 0
 Copyright Tinkerforge GmbH 2018.\nThis documentation describes Open Hardware and is licensed under the\nCERN OHL v. 1.1.\nYou may redistribute and modify this documentation under the terms of the\nCERN OHL v.1.1. (http://ohwr.org/cernohl). This documentation is distributed\nWITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF\nMERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A\nPARTICULAR PURPOSE. Please see the CERN OHL v.1.1 for applicable\nconditions\n
-Wire Wire Line
-	6700 2800 6900 2800
-Wire Wire Line
-	6700 2900 7200 2900
-Text GLabel 6700 2900 0    47   Input ~ 0
+Text GLabel 9950 4000 0    47   Input ~ 0
 SDA
-Text GLabel 6700 2800 0    47   Input ~ 0
+Text GLabel 9950 2500 0    47   Input ~ 0
 SCL
 $Comp
 L tinkerforge:GND #PWR03
@@ -90,9 +86,9 @@ F 3 "" H 4050 6700 60  0001 C CNN
 	1    4050 6700
 	1    0    0    -1  
 $EndComp
-Text GLabel 4050 2550 0    47   Input ~ 0
+Text GLabel 2850 2550 0    47   Input ~ 0
 SDA
-Text GLabel 4050 2750 0    47   Input ~ 0
+Text GLabel 2850 2750 0    47   Input ~ 0
 SCL
 $Comp
 L tinkerforge:GND #PWR05
@@ -329,10 +325,6 @@ Wire Wire Line
 	4050 3250 4250 3250
 Wire Wire Line
 	4050 5000 4250 5000
-Wire Wire Line
-	4050 2550 4250 2550
-Wire Wire Line
-	4250 2750 4050 2750
 NoConn ~ 4250 4250
 NoConn ~ 4250 4150
 NoConn ~ 4250 4050
@@ -429,55 +421,51 @@ $EndComp
 Wire Wire Line
 	3950 2350 4250 2350
 NoConn ~ 4250 2950
-Text GLabel 7100 3200 0    47   Input ~ 0
-RESET
-Text GLabel 4050 2850 0    47   Output ~ 0
-RESET
+Text GLabel 9950 3900 0    47   Output ~ 0
+INTERRUPT
+Text GLabel 4050 2850 0    47   Input ~ 0
+INTERRUPT
 Wire Wire Line
 	4050 2850 4250 2850
 $Comp
 L tinkerforge:R_PACK4 RP2
 U 1 1 5AABE82B
-P 6850 2500
-F 0 "RP2" H 6850 2950 50  0000 C CNN
-F 1 "2k2" H 6850 2450 50  0000 C CNN
-F 2 "kicad-libraries:4X0603" H 6850 2500 50  0001 C CNN
-F 3 "" H 6850 2500 50  0000 C CNN
-	1    6850 2500
+P 3000 2250
+F 0 "RP2" H 3000 2700 50  0000 C CNN
+F 1 "2k2" H 3000 2200 50  0000 C CNN
+F 2 "kicad-libraries:4X0603" H 3000 2250 50  0001 C CNN
+F 3 "" H 3000 2250 50  0000 C CNN
+	1    3000 2250
 	0    1    1    0   
 $EndComp
 $Comp
 L tinkerforge:VCC #PWR013
 U 1 1 5AABE9F5
-P 7050 2250
-F 0 "#PWR013" H 7050 2350 30  0001 C CNN
-F 1 "VCC" H 7050 2350 30  0000 C CNN
-F 2 "" H 7050 2250 60  0001 C CNN
-F 3 "" H 7050 2250 60  0001 C CNN
-	1    7050 2250
+P 3200 2000
+F 0 "#PWR013" H 3200 2100 30  0001 C CNN
+F 1 "VCC" H 3200 2100 30  0000 C CNN
+F 2 "" H 3200 2000 60  0001 C CNN
+F 3 "" H 3200 2000 60  0001 C CNN
+	1    3200 2000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6900 2700 6900 2800
-Connection ~ 6900 2800
+	3050 2450 3050 2550
 Wire Wire Line
-	7200 2900 7200 2700
-Connection ~ 7200 2900
+	3050 2050 3050 2000
 Wire Wire Line
-	6900 2300 6900 2250
+	3050 2000 3150 2000
 Wire Wire Line
-	6900 2250 7000 2250
+	3350 2000 3350 2050
+Connection ~ 3200 2000
 Wire Wire Line
-	7200 2250 7200 2300
-Connection ~ 7050 2250
+	3250 2050 3250 2000
+Connection ~ 3250 2000
 Wire Wire Line
-	7100 2300 7100 2250
-Connection ~ 7100 2250
-Wire Wire Line
-	7000 2300 7000 2250
-Connection ~ 7000 2250
-NoConn ~ 7000 2700
-NoConn ~ 7100 2700
+	3150 2050 3150 2000
+Connection ~ 3150 2000
+NoConn ~ 3150 2450
+NoConn ~ 3250 2450
 NoConn ~ 4250 2650
 NoConn ~ 4250 2450
 Wire Wire Line
@@ -497,119 +485,129 @@ Wire Wire Line
 Wire Wire Line
 	2200 1500 2200 1550
 Wire Wire Line
-	7050 2250 7100 2250
+	3200 2000 3250 2000
 Wire Wire Line
-	7100 2250 7200 2250
+	3250 2000 3350 2000
 Wire Wire Line
-	7000 2250 7050 2250
+	3150 2000 3200 2000
 $Comp
-L tinkerforge:MMC5883MA U?
+L tinkerforge:MMC5883MA U2
 U 1 1 5C633EC1
-P 8900 3150
-F 0 "U?" H 8900 4100 50  0000 L CNN
-F 1 "MMC5883MA" V 9150 2900 50  0000 L CNN
-F 2 "" H 8900 3150 50  0001 C CNN
-F 3 "" H 8900 3150 50  0001 C CNN
-	1    8900 3150
+P 10550 3250
+F 0 "U2" H 10550 4200 50  0000 L CNN
+F 1 "MMC5883MA" V 10800 3000 50  0000 L CNN
+F 2 "kicad-libraries:LGA-16-3x3" H 10550 3250 50  0001 C CNN
+F 3 "" H 10550 3250 50  0001 C CNN
+	1    10550 3250
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7550 2800 7550 2400
-Wire Wire Line
-	7550 2400 8500 2400
-Wire Wire Line
-	6900 2800 7550 2800
-Wire Wire Line
-	7550 2900 7550 3900
-Wire Wire Line
-	7550 3900 8500 3900
-Wire Wire Line
-	7200 2900 7550 2900
 $Comp
-L tinkerforge:C C?
+L tinkerforge:C C6
 U 1 1 5C63B458
-P 8000 3300
-F 0 "C?" V 7950 3150 50  0000 C CNN
-F 1 "10uF" V 8050 3450 50  0000 C CNN
-F 2 "" H 8000 3300 60  0000 C CNN
-F 3 "" H 8000 3300 60  0000 C CNN
-	1    8000 3300
-	0    1    1    0   
+P 8850 3500
+F 0 "C6" H 8950 3400 50  0000 C CNN
+F 1 "10uF" H 8750 3650 50  0000 C CNN
+F 2 "kicad-libraries:C0805" H 8850 3500 60  0001 C CNN
+F 3 "" H 8850 3500 60  0000 C CNN
+	1    8850 3500
+	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	8500 3400 8200 3400
-Wire Wire Line
-	8200 3400 8200 3450
-Wire Wire Line
-	8200 3450 7750 3450
-Connection ~ 7750 3450
-Wire Wire Line
-	7750 3450 7750 3750
-Wire Wire Line
-	8200 3200 8200 3150
-Wire Wire Line
-	8200 3150 7750 3150
-Wire Wire Line
-	8200 3200 8500 3200
-Wire Wire Line
-	7750 3150 7750 3300
-Wire Wire Line
-	7800 3300 7750 3300
-Connection ~ 7750 3300
-Wire Wire Line
-	7750 3300 7750 3450
-Wire Wire Line
-	8200 3300 8500 3300
 $Comp
-L tinkerforge:GND #PWR?
+L tinkerforge:GND #PWR02
 U 1 1 5C645988
-P 7750 4100
-F 0 "#PWR?" H 7750 3850 50  0001 C CNN
-F 1 "GND" H 7755 3927 50  0000 C CNN
-F 2 "" H 7750 4100 50  0000 C CNN
-F 3 "" H 7750 4100 50  0000 C CNN
-	1    7750 4100
+P 8550 4400
+F 0 "#PWR02" H 8550 4150 50  0001 C CNN
+F 1 "GND" H 8555 4227 50  0000 C CNN
+F 2 "" H 8550 4400 50  0000 C CNN
+F 3 "" H 8550 4400 50  0000 C CNN
+	1    8550 4400
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	8500 2500 8300 2500
-Wire Wire Line
-	8300 2500 8300 3600
-Wire Wire Line
-	8300 3600 8500 3600
 $Comp
-L tinkerforge:C C?
+L tinkerforge:C C2
 U 1 1 5C6471E1
-P 8000 3750
-F 0 "C?" V 7850 3750 50  0000 C CNN
-F 1 "1uF" V 8050 3900 50  0000 C CNN
-F 2 "" H 8000 3750 60  0000 C CNN
-F 3 "" H 8000 3750 60  0000 C CNN
-	1    8000 3750
-	0    1    1    0   
+P 8550 2600
+F 0 "C2" H 8650 2500 50  0000 C CNN
+F 1 "1uF" H 8450 2750 50  0000 C CNN
+F 2 "kicad-libraries:C0603F" H 8550 2600 60  0001 C CNN
+F 3 "" H 8550 2600 60  0000 C CNN
+	1    8550 2600
+	-1   0    0    1   
 $EndComp
+Wire Wire Line
+	2850 2750 3350 2750
+Wire Wire Line
+	2850 2550 3050 2550
+Connection ~ 3050 2550
+Wire Wire Line
+	3050 2550 4250 2550
+Wire Wire Line
+	3350 2450 3350 2750
+Connection ~ 3350 2750
+Wire Wire Line
+	3350 2750 4250 2750
+Wire Wire Line
+	10150 4000 9950 4000
+Wire Wire Line
+	10150 2500 9950 2500
+Wire Wire Line
+	9950 3900 10150 3900
+Wire Wire Line
+	8550 3300 8550 3700
+Wire Wire Line
+	8550 3300 8850 3300
+Wire Wire Line
+	9150 3400 9150 3700
+Wire Wire Line
+	9150 3400 10150 3400
+Wire Wire Line
+	8550 3700 8850 3700
+Connection ~ 8550 3700
+Connection ~ 8850 3700
+Connection ~ 8850 3300
+Wire Wire Line
+	8850 3300 10150 3300
+Wire Wire Line
+	8850 3700 9150 3700
+Wire Wire Line
+	9250 3500 10150 3500
+Wire Wire Line
+	8550 3700 8550 3800
+Wire Wire Line
+	9250 3500 9250 3800
+Wire Wire Line
+	9250 3800 8550 3800
+Connection ~ 8550 3800
+Wire Wire Line
+	8550 3800 8550 4400
+Wire Wire Line
+	8550 2800 8550 3300
+Connection ~ 8550 3300
+Wire Wire Line
+	8550 2050 8550 2400
+Wire Wire Line
+	8550 2400 9250 2400
+Wire Wire Line
+	9250 2400 9250 2600
+Wire Wire Line
+	9250 2600 9750 2600
+Connection ~ 8550 2400
+Wire Wire Line
+	9750 2600 9750 3700
+Wire Wire Line
+	9750 3700 10150 3700
+Connection ~ 9750 2600
+Wire Wire Line
+	9750 2600 10150 2600
 $Comp
-L tinkerforge:3V3 #PWR?
-U 1 1 5C6473B1
-P 8200 3700
-F 0 "#PWR?" H 8200 3550 50  0001 C CNN
-F 1 "3V3" H 8215 3873 50  0000 C CNN
-F 2 "" H 8200 3700 50  0000 C CNN
-F 3 "" H 8200 3700 50  0000 C CNN
-	1    8200 3700
+L tinkerforge:VCC #PWR0101
+U 1 1 5C661873
+P 8550 2050
+F 0 "#PWR0101" H 8550 2150 40  0001 C CNN
+F 1 "VCC" H 8559 2206 40  0000 C CNN
+F 2 "" H 8550 2050 60  0000 C CNN
+F 3 "" H 8550 2050 60  0000 C CNN
+	1    8550 2050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	7800 3750 7750 3750
-Connection ~ 7750 3750
-Wire Wire Line
-	7750 3750 7750 4100
-Wire Wire Line
-	8200 3750 8300 3750
-Wire Wire Line
-	8300 3750 8300 3600
-Connection ~ 8300 3600
-Wire Wire Line
-	8200 3700 8200 3750
-Connection ~ 8200 3750
 $EndSCHEMATC
