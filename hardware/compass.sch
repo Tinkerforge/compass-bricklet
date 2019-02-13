@@ -553,17 +553,11 @@ Wire Wire Line
 Wire Wire Line
 	9950 3900 10150 3900
 Wire Wire Line
-	8550 3300 8550 3700
-Wire Wire Line
 	8550 3300 8850 3300
 Wire Wire Line
 	9150 3400 9150 3700
 Wire Wire Line
 	9150 3400 10150 3400
-Wire Wire Line
-	8550 3700 8850 3700
-Connection ~ 8550 3700
-Connection ~ 8850 3700
 Connection ~ 8850 3300
 Wire Wire Line
 	8850 3300 10150 3300
@@ -571,8 +565,6 @@ Wire Wire Line
 	8850 3700 9150 3700
 Wire Wire Line
 	9250 3500 10150 3500
-Wire Wire Line
-	8550 3700 8550 3800
 Wire Wire Line
 	9250 3500 9250 3800
 Wire Wire Line
@@ -610,4 +602,6 @@ F 3 "" H 8550 2050 60  0000 C CNN
 	1    8550 2050
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	8550 3300 8550 3800
 $EndSCHEMATC
