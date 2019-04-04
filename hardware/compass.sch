@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:compass-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -495,7 +496,7 @@ U 1 1 5C633EC1
 P 10550 3250
 F 0 "U2" H 10550 4200 50  0000 L CNN
 F 1 "MMC5883MA" V 10800 3000 50  0000 L CNN
-F 2 "tinkerforge:LGA-16" H 10550 3250 50  0001 C CNN
+F 2 "kicad-libraries:LGA16-3x3_Compass" H 10550 3250 50  0001 C CNN
 F 3 "" H 10550 3250 50  0001 C CNN
 	1    10550 3250
 	1    0    0    -1  
