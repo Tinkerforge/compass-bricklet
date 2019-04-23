@@ -1,7 +1,7 @@
 /* compass-bricklet
  * Copyright (C) 2019 Olaf Lüke <olaf@tinkerforge.com>
  *
- * main.c: Initialization for Compass Bricklet
+ * mmc5883ma.h: Driver for MMC5883MA magnetic sensor
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,27 +19,19 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <stdio.h>
-#include <stdbool.h>
+#ifndef MMC5883MA_H
+#define MMC5883MA_H
 
-#include "configs/config.h"
+#include <stdint.h>
+#include "bricklib2/hal/i2c_fifo/i2c_fifo.h"
 
-#include "bricklib2/bootloader/bootloader.h"
-#include "bricklib2/hal/system_timer/system_timer.h"
-#include "bricklib2/logging/logging.h"
-#include "communication.h"
-#include "mmc5883ma.h"
+typedef struct {
+	I2CFifo i2c_fifo;
+} MMC5883MA;
 
-int main(void) {
-	logging_init();
-	logd("Start Compass Bricklet\n\r");
+extern MMC5883MA mmc5883ma;
 
-	communication_init();
-	mmc5883ma_init();
+void mmc5883ma_tick(void);
+void mmc5883ma_init(void);
 
-	while(true) {
-		bootloader_tick();
-		communication_tick();
-		mmc5883ma_tick();
-	}
-}
+#endif
