@@ -1,0 +1,6 @@
+# Change XYZ to the UID of your Compass Bricklet
+
+setup:
+	# Get current heading
+	subscribe to tinkerforge/response/compass_bricklet/XYZ/get_heading
+	publish '' to tinkerforge/request/compass_bricklet/XYZ/get_heading

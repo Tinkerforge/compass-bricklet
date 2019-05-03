@@ -1,0 +1,27 @@
+Needs["NETLink`"]
+LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
+
+host="localhost"
+port=4223
+uid="XYZ"(*Change XYZ to the UID of your Compass Bricklet*)
+
+(*Create IPConnection and device object*)
+ipcon=NETNew["Tinkerforge.IPConnection"]
+c=NETNew["Tinkerforge.BrickletCompass",uid,ipcon]
+ipcon@Connect[host,port]
+
+(*Callback function for heading callback*)
+HeadingCB[sender_,heading_]:=
+ Print["Heading: "<>ToString[N[Quantity[heading,"°/10"]]]]
+AddEventHandler[c@HeadingCallback,HeadingCB]
+
+(*Set period for heading callback to 0.1s (100ms) without a threshold*)
+option=Tinkerforge`BrickletCompass`THRESHOLDUOPTIONUOFF
+c@SetHeadingCallbackConfiguration[100,False,option,0,0]
+
+Input["Click OK to exit"]
+
+(*Clean up*)
+ipcon@Disconnect[]
+ReleaseNETObject[c]
+ReleaseNETObject[ipcon]
