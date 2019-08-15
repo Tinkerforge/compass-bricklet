@@ -244,6 +244,11 @@
       (net 34 "Net-(U2-Pad3)"))
     (pad 4 smd rect (at -0.75 -1.5 90) (size 0.25 0.8) (layers F.Cu F.Paste F.Mask)
       (net 35 "Net-(U2-Pad4)"))
+    (model ${KICAD_SYMBOL_DIR}/3d/Housings_LGA/LGA-16_3x3mm_Pitch0.5mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module kicad-libraries:4X0603 (layer F.Cu) (tedit 590338BF) (tstamp 5C6415C3)
