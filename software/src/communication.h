@@ -131,7 +131,7 @@ typedef struct {
 typedef struct {
 	TFPMessageHeader header;
 	int16_t offset[3];
-	int16_t multiplier[3];
+	int16_t gain[3];
 } __attribute__((__packed__)) SetCalibration;
 
 typedef struct {
@@ -141,7 +141,7 @@ typedef struct {
 typedef struct {
 	TFPMessageHeader header;
 	int16_t offset[3];
-	int16_t multiplier[3];
+	int16_t gain[3];
 } __attribute__((__packed__)) GetCalibration_Response;
 
 
