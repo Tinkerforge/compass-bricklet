@@ -33,7 +33,7 @@ int main(void) {
 	// Register heading callback to function cb_heading
 	compass_register_callback(&c,
 	                          COMPASS_CALLBACK_HEADING,
-	                          (void *)cb_heading,
+	                          (void (*)(void))cb_heading,
 	                          NULL);
 
 	// Set period for heading callback to 0.1s (100ms) without a threshold
