@@ -93,8 +93,8 @@ BootloaderHandleMessageResponse get_configuration(const GetConfiguration *data, 
 
 BootloaderHandleMessageResponse set_calibration(const SetCalibration *data) {
 	for(uint8_t i = 0; i < MMC5883MA_AXIS_NUM; i++) {
-		mmc5883ma.calibration_offset[i]     = data->offset[i];
-		mmc5883ma.calibration_multiplier[i] = data->gain[i];
+		mmc5883ma.calibration_offset[i] = data->offset[i];
+		mmc5883ma.calibration_gain[i]   = data->gain[i];
 	}
 
 	mmc5883ma.calibration_new = true;
@@ -105,8 +105,8 @@ BootloaderHandleMessageResponse set_calibration(const SetCalibration *data) {
 BootloaderHandleMessageResponse get_calibration(const GetCalibration *data, GetCalibration_Response *response) {
 	response->header.length = sizeof(GetCalibration_Response);
 	for(uint8_t i = 0; i < MMC5883MA_AXIS_NUM; i++) {
-		response->offset[i]     = mmc5883ma.calibration_offset[i];
-		response->gain[i] = mmc5883ma.calibration_multiplier[i];
+		response->offset[i] = mmc5883ma.calibration_offset[i];
+		response->gain[i]   = mmc5883ma.calibration_gain[i];
 	}
 
 	return HANDLE_MESSAGE_RESPONSE_NEW_MESSAGE;

@@ -39,7 +39,7 @@ typedef struct {
 
     bool calibration_new;
     int16_t calibration_offset[MMC5883MA_AXIS_NUM];
-    int16_t calibration_multiplier[MMC5883MA_AXIS_NUM];
+    int16_t calibration_gain[MMC5883MA_AXIS_NUM];
 
     uint32_t mfd_period;
     bool mfd_value_has_to_change;

@@ -37,13 +37,13 @@ CoopTask mmc5883ma_task;
 void mmc5883ma_calibration_write(void) {
 	uint32_t page[EEPROM_PAGE_SIZE/sizeof(uint32_t)];
 
-	page[MMC5883_CALIBRATION_MAGIC_POS]          = MMC5883_CALIBRATION_MAGIC;
-	page[MMC5883_CALIBRATION_OFFSET_POS + 0]     = mmc5883ma.calibration_offset[0];
-	page[MMC5883_CALIBRATION_OFFSET_POS + 1]     = mmc5883ma.calibration_offset[1];
-	page[MMC5883_CALIBRATION_OFFSET_POS + 2]     = mmc5883ma.calibration_offset[2];
-	page[MMC5883_CALIBRATION_MULTIPLIER_POS + 0] = mmc5883ma.calibration_multiplier[0];
-	page[MMC5883_CALIBRATION_MULTIPLIER_POS + 1] = mmc5883ma.calibration_multiplier[1];
-	page[MMC5883_CALIBRATION_MULTIPLIER_POS + 2] = mmc5883ma.calibration_multiplier[2];
+	page[MMC5883_CALIBRATION_MAGIC_POS]      = MMC5883_CALIBRATION_MAGIC;
+	page[MMC5883_CALIBRATION_OFFSET_POS + 0] = mmc5883ma.calibration_offset[0];
+	page[MMC5883_CALIBRATION_OFFSET_POS + 1] = mmc5883ma.calibration_offset[1];
+	page[MMC5883_CALIBRATION_OFFSET_POS + 2] = mmc5883ma.calibration_offset[2];
+	page[MMC5883_CALIBRATION_GAIN_POS + 0]   = mmc5883ma.calibration_gain[0];
+	page[MMC5883_CALIBRATION_GAIN_POS + 1]   = mmc5883ma.calibration_gain[1];
+	page[MMC5883_CALIBRATION_GAIN_POS + 2]   = mmc5883ma.calibration_gain[2];
 
 	bootloader_write_eeprom_page(MMC5883_CALIBRATION_PAGE, page);
 }
@@ -59,19 +59,19 @@ void mmc5883ma_calibration_read(void) {
 		mmc5883ma.calibration_offset[0] = 0;
 		mmc5883ma.calibration_offset[1] = 0;
 		mmc5883ma.calibration_offset[2] = 0;
-		mmc5883ma.calibration_multiplier[0] = 10000;
-		mmc5883ma.calibration_multiplier[1] = 10000;
-		mmc5883ma.calibration_multiplier[2] = 10000;
+		mmc5883ma.calibration_gain[0] = 10000;
+		mmc5883ma.calibration_gain[1] = 10000;
+		mmc5883ma.calibration_gain[2] = 10000;
 		mmc5883ma_calibration_write();
 		return;
 	}
 
-	mmc5883ma.calibration_offset[0]     = page[MMC5883_CALIBRATION_OFFSET_POS + 0];
-	mmc5883ma.calibration_offset[1]     = page[MMC5883_CALIBRATION_OFFSET_POS + 1];
-	mmc5883ma.calibration_offset[2]     = page[MMC5883_CALIBRATION_OFFSET_POS + 2];
-	mmc5883ma.calibration_multiplier[0] = page[MMC5883_CALIBRATION_MULTIPLIER_POS + 0];
-	mmc5883ma.calibration_multiplier[1] = page[MMC5883_CALIBRATION_MULTIPLIER_POS + 1];
-	mmc5883ma.calibration_multiplier[2] = page[MMC5883_CALIBRATION_MULTIPLIER_POS + 2];
+	mmc5883ma.calibration_offset[0] = page[MMC5883_CALIBRATION_OFFSET_POS + 0];
+	mmc5883ma.calibration_offset[1] = page[MMC5883_CALIBRATION_OFFSET_POS + 1];
+	mmc5883ma.calibration_offset[2] = page[MMC5883_CALIBRATION_OFFSET_POS + 2];
+	mmc5883ma.calibration_gain[0]   = page[MMC5883_CALIBRATION_GAIN_POS + 0];
+	mmc5883ma.calibration_gain[1]   = page[MMC5883_CALIBRATION_GAIN_POS + 1];
+	mmc5883ma.calibration_gain[2]   = page[MMC5883_CALIBRATION_GAIN_POS + 2];
 }
 
 // Takes about 20ms
@@ -175,7 +175,7 @@ void mmc5883ma_task_tick(void) {
 		i2c_fifo_coop_write_register(&mmc5883ma.i2c_fifo, MMC5883MA_REG_STATUS, 1, &value, true);
 		for(uint8_t i = 0; i < MMC5883MA_AXIS_NUM; i++) {
 			int32_t raw = (values[i] - UINT16_MAX/2 - mmc5883ma.bridge_offset[i])*10000/4096;
-			mmc5883ma.magnetic_flux_density[i] = (raw - mmc5883ma.calibration_offset[i])*mmc5883ma.calibration_multiplier[i]/10000;
+			mmc5883ma.magnetic_flux_density[i] = (raw - mmc5883ma.calibration_offset[i])*mmc5883ma.calibration_gain[i]/10000;
 		}
 
 		mmc5883ma.heading = ((int32_t)(atan2(mmc5883ma.magnetic_flux_density[1], mmc5883ma.magnetic_flux_density[0])*1800))/M_PI;
