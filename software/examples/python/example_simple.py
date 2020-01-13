@@ -19,5 +19,5 @@ if __name__ == "__main__":
     heading = c.get_heading()
     print("Heading: " + str(heading/10.0) + " °")
 
-    raw_input("Press key to exit\n") # Use input() in Python 3
+    input("Press key to exit\n") # Use raw_input() in Python 2
     ipcon.disconnect()
