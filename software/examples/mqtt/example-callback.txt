@@ -4,6 +4,6 @@ setup:
 	# Handle incoming heading callbacks
 	subscribe to tinkerforge/callback/compass_bricklet/XYZ/heading
 	publish '{"register": true}' to tinkerforge/register/compass_bricklet/XYZ/heading # Register heading callback
-	
+
 	# Set period for heading callback to 0.1s (100ms) without a threshold
 	publish '{"period": 100, "value_has_to_change": false, "option": "off", "min": 0, "max": 0}' to tinkerforge/request/compass_bricklet/XYZ/set_heading_callback_configuration
