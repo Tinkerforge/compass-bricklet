@@ -1,14 +1,9 @@
-
-
 #include "bindings/hal_common.h"
 #include "bindings/bricklet_compass.h"
 
 #define UID "XYZ" // Change XYZ to the UID of your Compass Bricklet
 
 void check(int rc, const char* msg);
-
-
-
 
 TF_Compass c;
 
