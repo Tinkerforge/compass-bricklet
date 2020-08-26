@@ -18,15 +18,13 @@ void example_setup(TF_HalContext *hal) {
 	// Create device object
 	check(tf_compass_create(&c, UID, hal), "create device object");
 
-
 	// Register heading callback to function heading_handler
 	tf_compass_register_heading_callback(&c,
-	                                    heading_handler,
-	                                    NULL);
+	                                     heading_handler,
+	                                     NULL);
 
 	// Set period for heading callback to 0.1s (100ms) without a threshold
 	tf_compass_set_heading_callback_configuration(&c, 100, false, 'x', 0, 0);
-
 }
 
 void example_loop(TF_HalContext *hal) {
