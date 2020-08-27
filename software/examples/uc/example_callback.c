@@ -5,14 +5,18 @@
 
 void check(int rc, const char* msg);
 
+void example_setup(TF_HalContext *hal);
+void example_loop(TF_HalContext *hal);
+
+
 // Callback function for heading callback
-void heading_handler(TF_Compass *device, int16_t heading, void *user_data) {
+static void heading_handler(TF_Compass *device, int16_t heading, void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
 	tf_hal_printf("Heading: %d 1/%d °\n", heading, 10.0);
 }
 
-TF_Compass c;
+static TF_Compass c;
 
 void example_setup(TF_HalContext *hal) {
 	// Create device object
