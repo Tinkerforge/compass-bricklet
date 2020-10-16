@@ -23,7 +23,7 @@ void example_setup(TF_HalContext *hal) {
 	int16_t heading;
 	check(tf_compass_get_heading(&c, &heading), "get heading");
 
-	tf_hal_printf("Heading: %d 1/%d °\n", heading, 10.0);
+	tf_hal_printf("Heading: %d 1/%d °\n", heading, 10);
 }
 
 void example_loop(TF_HalContext *hal) {
