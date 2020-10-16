@@ -17,7 +17,7 @@ void example_loop(TF_HalContext *hal);
 static void heading_handler(TF_Compass *device, int16_t heading, void *user_data) {
 	(void)device; (void)user_data; // avoid unused parameter warning
 
-	tf_hal_printf("Heading: %d 1/%d °\n", heading, 10.0);
+	tf_hal_printf("Heading: %d 1/%d °\n", heading, 10);
 }
 
 static TF_Compass c;
