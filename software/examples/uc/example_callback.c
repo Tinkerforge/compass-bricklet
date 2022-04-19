@@ -9,8 +9,8 @@
 
 void check(int rc, const char* msg);
 
-void example_setup(TF_HalContext *hal);
-void example_loop(TF_HalContext *hal);
+void example_setup(TF_HAL *hal);
+void example_loop(TF_HAL *hal);
 
 
 // Callback function for heading callback
@@ -22,7 +22,7 @@ static void heading_handler(TF_Compass *device, int16_t heading, void *user_data
 
 static TF_Compass c;
 
-void example_setup(TF_HalContext *hal) {
+void example_setup(TF_HAL *hal) {
 	// Create device object
 	check(tf_compass_create(&c, UID, hal), "create device object");
 
@@ -35,7 +35,7 @@ void example_setup(TF_HalContext *hal) {
 	tf_compass_set_heading_callback_configuration(&c, 100, false, 'x', 0, 0);
 }
 
-void example_loop(TF_HalContext *hal) {
+void example_loop(TF_HAL *hal) {
 	// Poll for callbacks
 	tf_hal_callback_tick(hal, 0);
 }
